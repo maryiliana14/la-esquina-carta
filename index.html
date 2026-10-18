@@ -2,304 +2,420 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#3A563A" />
-  <title>La Esquina · Carta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La Esquina · La carta</title>
+  <meta name="description" content="Carta de La Esquina — Coffee · Tapas · La Carlota" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --green: #3A563A;
-      --terracotta: #C45C3E;
-      --ink: #2F2A26;
-      --muted: #6B625A;
-      --cream: #F6F1E8;
-      --line: #D9D0C3;
+      --cream: #f7f2ea;
+      --ink: #2c2a28;
+      --muted: #6a645c;
+      --coral: #c4786e;
+      --line: rgba(196, 120, 110, 0.55);
+      --hair: rgba(44, 42, 40, 0.08);
+      --max: 920px;
     }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
-      color: var(--ink);
       background: var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", system-ui, sans-serif;
+      font-size: 14px;
       line-height: 1.35;
+      -webkit-font-smoothing: antialiased;
     }
-    header {
-      padding: 1.6rem 1.25rem 1.1rem;
-      text-align: center;
-      background: var(--green);
-      color: #F8F4EC;
+
+    a { color: inherit; text-decoration: none; }
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.4rem 1.25rem 3rem;
     }
-    .logo {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 2rem;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-    }
-    .tag {
-      margin-top: 0.25rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      opacity: 0.85;
-    }
-    .kicker {
-      margin-top: 0.85rem;
-      font-family: Georgia, serif;
-      font-style: italic;
-      color: #E8B9A8;
-      font-size: 1.15rem;
-    }
-    nav {
+
+    /* Header */
+    .top {
       display: flex;
-      gap: 0.45rem;
-      overflow-x: auto;
-      padding: 0.75rem 1rem;
-      position: sticky;
-      top: 0;
-      background: rgba(246, 241, 232, 0.96);
-      border-bottom: 1px solid var(--line);
-      z-index: 2;
-      -webkit-overflow-scrolling: touch;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
     }
-    nav a {
-      flex: 0 0 auto;
-      text-decoration: none;
-      color: var(--green);
-      border: 1px solid var(--line);
-      background: #fff;
-      border-radius: 999px;
-      padding: 0.4rem 0.75rem;
+    .brand {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: 1.55rem;
+      letter-spacing: 0.12em;
+      line-height: 1;
+    }
+    .brand span {
+      display: block;
+      margin-top: 0.35rem;
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+    }
+    .badge {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      color: var(--coral);
+      font-weight: 500;
+      padding-top: 0.25rem;
+    }
+
+    .hero {
+      margin: 0 0 1.1rem;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem 1.1rem;
+      margin-bottom: 2.2rem;
       font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .nav a:hover { color: var(--coral); }
+
+    /* Sections */
+    section {
+      margin-bottom: 2.4rem;
+      scroll-margin-top: 1rem;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin: 0 0 1.15rem;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(1.55rem, 3.5vw, 1.9rem);
+      letter-spacing: -0.01em;
+    }
+    .section-title::before {
+      content: "";
+      width: 2.2rem;
+      height: 1.5px;
+      background: var(--coral);
+      flex: 0 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6rem 2.4rem;
+    }
+    @media (max-width: 720px) {
+      .grid { grid-template-columns: 1fr; gap: 1.8rem; }
+    }
+
+    .block h3 {
+      margin: 0 0 0.55rem;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.15rem;
       font-weight: 600;
     }
-    main { padding: 0.5rem 1rem 2.5rem; max-width: 640px; margin: 0 auto; }
-    section { margin-top: 1.4rem; }
-    h2 {
-      margin: 0 0 0.65rem;
-      font-size: 0.95rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--green);
-      border-bottom: 2px solid var(--green);
-      padding-bottom: 0.35rem;
-    }
+
     .cols {
       display: grid;
       grid-template-columns: 1fr auto auto;
       gap: 0.15rem 0.65rem;
-      font-size: 0.92rem;
+      align-items: end;
     }
-    .cols.two { grid-template-columns: 1fr auto; }
-    .cols .head {
-      font-size: 0.72rem;
+    .cols.one { grid-template-columns: 1fr auto; }
+    .cols.two { grid-template-columns: 1fr auto auto; }
+
+    .col-head {
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      font-weight: 700;
+      color: var(--coral);
+      font-weight: 500;
       padding-bottom: 0.25rem;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 0.15rem;
     }
-    .item { padding: 0.35rem 0; border-bottom: 1px solid rgba(217, 208, 195, 0.7); }
-    .price { color: var(--terracotta); font-weight: 700; white-space: nowrap; text-align: right; }
-    .note {
-      margin: 0.55rem 0 0;
-      font-size: 0.8rem;
-      color: var(--muted);
+    .col-head.name { color: transparent; border-color: transparent; }
+
+    .row {
+      display: contents;
     }
-    .brands {
-      margin-top: 0.7rem;
-      padding: 0.75rem 0.85rem;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      font-size: 0.82rem;
-      color: var(--muted);
+    .row .name,
+    .row .price {
+      padding: 0.42rem 0;
+      border-bottom: 1px solid var(--hair);
     }
-    footer {
-      text-align: center;
-      padding: 1.5rem 1rem 2rem;
-      color: var(--terracotta);
-      font-size: 0.95rem;
+    .row .name {
+      color: var(--ink);
+      padding-right: 0.4rem;
     }
-    .pdf {
+    .row .name small {
       display: block;
-      margin: 1rem auto 0;
-      width: fit-content;
-      color: var(--green);
+      margin-top: 0.15rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.3;
+    }
+    .row .price {
+      text-align: right;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+      min-width: 3.2rem;
+    }
+    .row .price.empty { color: transparent; }
+
+    .note {
+      margin: 0.65rem 0 0;
+      font-size: 0.78rem;
+      color: var(--coral);
+      font-weight: 500;
+    }
+
+    .stack + .stack { margin-top: 1.5rem; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid rgba(44, 42, 40, 0.18);
       font-size: 0.85rem;
+    }
+    footer .tag {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-style: italic;
+      font-size: 1.05rem;
+    }
+    footer .ig { color: var(--muted); }
+    footer .ig strong { color: var(--ink); font-weight: 500; }
+
+    @media print {
+      body { background: #fff; }
+      .nav { display: none; }
+      .wrap { padding: 0.5rem; max-width: none; }
+      section { break-inside: avoid; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">LE</div>
-    <div class="tag">La Esquina · Coffee · Tardeo</div>
-    <div class="kicker">Tu esquina favorita</div>
-  </header>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">LA ESQUINA<span>COFFEE · TAPAS</span></div>
+      <div class="badge">LA CARTA</div>
+    </header>
 
-  <nav>
-    <a href="#cafe">Café</a>
-    <a href="#bolleria">Bollería</a>
-    <a href="#smoothies">Smoothies</a>
-    <a href="#bebidas">Bebidas</a>
-    <a href="#tostas">Tostas</a>
-    <a href="#bocadillos">Bocadillos</a>
-    <a href="#compartir">Tapas</a>
-    <a href="#alcohol">Copas</a>
-    <a href="#vinos">Vinos</a>
-  </nav>
+    <h1 class="hero">Tu rincón favorito.</h1>
 
-  <main>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#cafe">Café y algo dulce</a>
+      <a href="#tostas">Tostas</a>
+      <a href="#panes">Entre panes &amp; bebidas</a>
+      <a href="#compartir">Compartir &amp; brindar</a>
+    </nav>
+
+    <!-- 1 -->
     <section id="cafe">
-      <h2>Café y té</h2>
-      <div class="cols">
-        <div class="head"></div><div class="head">Sencillo</div><div class="head">Doble</div>
-        <div class="item">Expreso</div><div class="price item">1,60 €</div><div class="price item">1,70 €</div>
-        <div class="item">Solo</div><div class="price item">1,70 €</div><div class="item"></div>
-        <div class="item">Cortado</div><div class="price item">1,70 €</div><div class="item"></div>
-        <div class="item">Americano</div><div class="price item">1,70 €</div><div class="item"></div>
-        <div class="item">Café con leche / latte</div><div class="price item">1,70 €</div><div class="price item">2,00 €</div>
-        <div class="item">Manchado</div><div class="price item">1,70 €</div><div class="item"></div>
-        <div class="item">Capuchino</div><div class="price item">2,50 €</div><div class="item"></div>
-        <div class="item">Bombón</div><div class="price item">1,70 €</div><div class="item"></div>
-        <div class="item">Carajillo</div><div class="price item">3,20 €</div><div class="item"></div>
-        <div class="item">Té</div><div class="price item">1,50 €</div><div class="item"></div>
-        <div class="item">Colacao</div><div class="price item">1,50 €</div><div class="item"></div>
-      </div>
-      <p class="note">Suplemento leche vegetal +0,30 €</p>
-    </section>
+      <h2 class="section-title">Café y algo dulce</h2>
+      <div class="grid">
+        <div class="block">
+          <h3>Café y té</h3>
+          <div class="cols two">
+            <div class="col-head name">·</div>
+            <div class="col-head">Sencillo</div>
+            <div class="col-head">Doble</div>
 
-    <section id="bolleria">
-      <h2>Bollería &amp; postres</h2>
-      <div class="cols two">
-        <div class="item">Berlina</div><div class="price item">3,00 €</div>
-        <div class="item">Magdalena</div><div class="price item">3,00 €</div>
-        <div class="item">Donuts</div><div class="price item">3,00 €</div>
-        <div class="item">Palmera croissant</div><div class="price item">3,00 €</div>
-      </div>
-    </section>
+            <div class="row"><div class="name">Express</div><div class="price">1,60 €</div><div class="price">1,70 €</div></div>
+            <div class="row"><div class="name">Solo</div><div class="price">1,70 €</div><div class="price">1,70 €</div></div>
+            <div class="row"><div class="name">Cortado</div><div class="price empty">—</div><div class="price">1,70 €</div></div>
+            <div class="row"><div class="name">Americano</div><div class="price empty">—</div><div class="price">1,70 €</div></div>
+            <div class="row"><div class="name">Café con leche / latte</div><div class="price">1,70 €</div><div class="price">2,00 €</div></div>
+            <div class="row"><div class="name">Manchado</div><div class="price empty">—</div><div class="price">1,70 €</div></div>
+            <div class="row"><div class="name">Capuchino</div><div class="price empty">—</div><div class="price">2,50 €</div></div>
+            <div class="row"><div class="name">Bombón</div><div class="price empty">—</div><div class="price">1,70 €</div></div>
+            <div class="row"><div class="name">Carajillo</div><div class="price empty">—</div><div class="price">3,30 €</div></div>
+            <div class="row"><div class="name">Té</div><div class="price empty">—</div><div class="price">1,50 €</div></div>
+            <div class="row"><div class="name">Colacao</div><div class="price empty">—</div><div class="price">1,50 €</div></div>
+          </div>
+          <p class="note">Suplemento de leche vegetal + 0,30 €</p>
+        </div>
 
-    <section id="smoothies">
-      <h2>Smoothies</h2>
-      <div class="cols two">
-        <div class="item">Raspberry Heaven</div><div class="price item">3,00 €</div>
-        <div class="item">Strawberry Fantasy</div><div class="price item">3,00 €</div>
-        <div class="item">Matcha Power</div><div class="price item">3,00 €</div>
-        <div class="item">Acai Kick</div><div class="price item">3,00 €</div>
-      </div>
-      <p class="note">Suplemento leche vegetal +0,30 €</p>
-    </section>
-
-    <section id="bebidas">
-      <h2>Otras bebidas</h2>
-      <div class="cols two">
-        <div class="item">Agua 0,5 L</div><div class="price item">1,20 €</div>
-        <div class="item">Agua 1 L</div><div class="price item">1,80 €</div>
-        <div class="item">Coca-Cola (clásica / 0 / 00)</div><div class="price item">2,00 €</div>
-        <div class="item">Sprite / Fanta / Fuze Tea</div><div class="price item">2,00 €</div>
-        <div class="item">Agua con gas / tónica</div><div class="price item">2,00 €</div>
-        <div class="item">Aquarius naranja / limón</div><div class="price item">2,00 €</div>
-        <div class="item">Zumo de naranja natural</div><div class="price item">2,00 €</div>
-        <div class="item">Zumo de piña / melocotón</div><div class="price item">2,00 €</div>
+        <div class="block">
+          <div class="stack">
+            <h3>Bollería &amp; postres</h3>
+            <div class="cols one">
+              <div class="row"><div class="name">Berlina</div><div class="price">3,00 €</div></div>
+              <div class="row"><div class="name">Magdalena</div><div class="price">3,00 €</div></div>
+              <div class="row"><div class="name">Donuts</div><div class="price">3,00 €</div></div>
+              <div class="row"><div class="name">Palmera Croissant</div><div class="price">3,00 €</div></div>
+            </div>
+          </div>
+          <div class="stack">
+            <h3>Smoothies</h3>
+            <div class="cols one">
+              <div class="row"><div class="name">Raspberry Heaven</div><div class="price">3,00 €</div></div>
+              <div class="row"><div class="name">Strawberry Fantasy</div><div class="price">3,00 €</div></div>
+              <div class="row"><div class="name">Matcha Power</div><div class="price">3,00 €</div></div>
+              <div class="row"><div class="name">Acai Kick</div><div class="price">3,00 €</div></div>
+            </div>
+            <p class="note">Suplemento de leche vegetal + 0,30 €</p>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- 2 -->
     <section id="tostas">
-      <h2>Tostas tradicionales</h2>
-      <div class="cols two">
-        <div class="item">Mantequilla / margarina / tomate / mermelada</div><div class="price item">1,30 €</div>
-        <div class="item">Paté ibérico / zurrapa / manteca colorá / crema de York</div><div class="price item">1,40 €</div>
-        <div class="item">Tomate en rodajas</div><div class="price item">1,40 €</div>
-        <div class="item">Jamón York / pavo</div><div class="price item">1,60 €</div>
-        <div class="item">Pisquitos de jamón y tomate</div><div class="price item">1,60 €</div>
-        <div class="item">Jamón y tomate</div><div class="price item">2,40 €</div>
-        <div class="item">York y queso fundido</div><div class="price item">2,80 €</div>
-        <div class="item">Jamón y queso fundido</div><div class="price item">3,00 €</div>
-        <div class="item">Aguacate y tomate</div><div class="price item">2,70 €</div>
+      <h2 class="section-title">Tostas</h2>
+      <div class="grid">
+        <div class="block">
+          <h3>Tostas tradicionales</h3>
+          <div class="cols two">
+            <div class="col-head name">·</div>
+            <div class="col-head">Media</div>
+            <div class="col-head">Entera</div>
+
+            <div class="row"><div class="name">Mantequilla / Margarina / Tomate / Mermelada</div><div class="price">1,30 €</div><div class="price">2,00 €</div></div>
+            <div class="row"><div class="name">Paté ibérico / Zurrapa / Manteca Colorá / Crema de York</div><div class="price">1,60 €</div><div class="price">2,10 €</div></div>
+            <div class="row"><div class="name">Tomate Rodajas</div><div class="price">1,40 €</div><div class="price">2,00 €</div></div>
+            <div class="row"><div class="name">Jamón York / Pavo</div><div class="price">1,80 €</div><div class="price">2,30 €</div></div>
+            <div class="row"><div class="name">Pisquitos de jamón y tomate</div><div class="price">1,90 €</div><div class="price">2,90 €</div></div>
+            <div class="row"><div class="name">Jamón y Tomate</div><div class="price">2,40 €</div><div class="price">4,30 €</div></div>
+            <div class="row"><div class="name">York y queso fundido</div><div class="price">2,10 €</div><div class="price">4,10 €</div></div>
+            <div class="row"><div class="name">Jamón y queso fundido</div><div class="price">2,60 €</div><div class="price">4,70 €</div></div>
+            <div class="row"><div class="name">Aguacate y Tomate</div><div class="price">2,70 €</div><div class="price">4,30 €</div></div>
+          </div>
+          <p class="note">Pan integral + 0,40 € · Croissant + 1,50 €</p>
+        </div>
+
+        <div class="block">
+          <h3>Tostas especiales</h3>
+          <div class="cols one">
+            <div class="col-head name">·</div>
+            <div class="col-head">Entera</div>
+
+            <div class="row"><div class="name">Aguacate y Philadelphia</div><div class="price">3,80 €</div></div>
+            <div class="row"><div class="name">Salmón ahumado, Philadelphia y aguacate</div><div class="price">4,50 €</div></div>
+            <div class="row"><div class="name">Salmón ahumado, aguacate y tomate triturado</div><div class="price">4,50 €</div></div>
+            <div class="row"><div class="name">Jamón, tomate, aceite y aguacate</div><div class="price">4,50 €</div></div>
+            <div class="row"><div class="name">York, rulo de cabra, aguacate, mermelada de tomate y brotes</div><div class="price">4,50 €</div></div>
+            <div class="row"><div class="name">Rulo de cabra, cebolla caramelizada y mermelada de tomate</div><div class="price">3,80 €</div></div>
+            <div class="row"><div class="name">Lomo y queso fundido</div><div class="price">4,20 €</div></div>
+            <div class="row"><div class="name">Atún y queso fundido</div><div class="price">3,80 €</div></div>
+            <div class="row"><div class="name">Atún, tomate y aguacate</div><div class="price">4,50 €</div></div>
+            <div class="row">
+              <div class="name">Personalizada
+                <small>Combina hasta 3 ingredientes a tu gusto. Ingrediente adicional + 0,50 €</small>
+              </div>
+              <div class="price">4,50 €</div>
+            </div>
+          </div>
+          <p class="note">Pan integral + 0,40 € · Croissant + 1,50 €</p>
+        </div>
       </div>
-      <p class="note">Pan brioche +0,60 € · Croissant +1,00 €</p>
     </section>
 
-    <section id="especiales">
-      <h2>Tostas especiales</h2>
-      <div class="cols two">
-        <div class="item">Aguacate y Philadelphia</div><div class="price item">3,80 €</div>
-        <div class="item">Salmón ahumado, Philadelphia y aguacate</div><div class="price item">4,50 €</div>
-        <div class="item">Salmón ahumado, aguacate y tomate triturado</div><div class="price item">4,50 €</div>
-        <div class="item">Jamón, tomate, aceite y aguacate</div><div class="price item">4,50 €</div>
-        <div class="item">York, rulo de cabra, aguacate, mermelada de tomate y brotes</div><div class="price item">4,50 €</div>
-        <div class="item">Rulo de cabra, cebolla caramelizada y mermelada de tomate</div><div class="price item">3,80 €</div>
-        <div class="item">Lomo y queso fundido</div><div class="price item">4,20 €</div>
-        <div class="item">Atún y queso fundido</div><div class="price item">3,80 €</div>
-        <div class="item">Atún, tomate y aguacate</div><div class="price item">4,50 €</div>
-        <div class="item">Personalizada (hasta 3 ingredientes)</div><div class="price item">4,50 €</div>
+    <!-- 3 -->
+    <section id="panes">
+      <h2 class="section-title">Entre panes &amp; bebidas</h2>
+      <div class="grid">
+        <div class="block">
+          <h3>Montaditos &amp; bocadillos</h3>
+          <div class="cols two">
+            <div class="col-head name">·</div>
+            <div class="col-head">Montadito</div>
+            <div class="col-head">Bocadillo</div>
+
+            <div class="row"><div class="name">Serranito</div><div class="price">2,50 €</div><div class="price">6,00 €</div></div>
+            <div class="row"><div class="name">Jamón York y queso</div><div class="price">2,00 €</div><div class="price">4,00 €</div></div>
+            <div class="row"><div class="name">Jamón serrano y queso</div><div class="price">2,50 €</div><div class="price">5,00 €</div></div>
+            <div class="row"><div class="name">Jamón y tomate</div><div class="price">2,00 €</div><div class="price">4,00 €</div></div>
+            <div class="row"><div class="name">Tortilla</div><div class="price">2,00 €</div><div class="price">4,00 €</div></div>
+            <div class="row"><div class="name">Rulo de cabra y cebolla caramelizada</div><div class="price">2,50 €</div><div class="price">5,50 €</div></div>
+            <div class="row"><div class="name">Lomo al whisky</div><div class="price">2,50 €</div><div class="price">5,50 €</div></div>
+            <div class="row"><div class="name">Bacon y queso</div><div class="price">2,50 €</div><div class="price">4,50 €</div></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h3>Otras bebidas</h3>
+          <div class="cols one">
+            <div class="row"><div class="name">Agua 0,5 L</div><div class="price">1,20 €</div></div>
+            <div class="row"><div class="name">Agua 1 L</div><div class="price">1,80 €</div></div>
+            <div class="row"><div class="name">Coca-Cola (Clásica / 0 / 00)</div><div class="price">2,00 €</div></div>
+            <div class="row"><div class="name">Sprite / Fanta / Fuze Tea</div><div class="price">2,00 €</div></div>
+            <div class="row"><div class="name">Agua con gas / Tónica</div><div class="price">2,00 €</div></div>
+            <div class="row"><div class="name">Aquarius Naranja / Limón</div><div class="price">2,00 €</div></div>
+            <div class="row"><div class="name">Zumo de Naranja Natural</div><div class="price">2,00 €</div></div>
+            <div class="row"><div class="name">Zumo de Piña / Melocotón</div><div class="price">2,00 €</div></div>
+          </div>
+        </div>
       </div>
-      <p class="note">Ingrediente adicional +0,50 € · Pan brioche +0,60 € · Croissant +1,00 €</p>
     </section>
 
-    <section id="bocadillos">
-      <h2>Montaditos &amp; bocadillos</h2>
-      <div class="cols">
-        <div class="head"></div><div class="head">Montadito</div><div class="head">Bocadillo</div>
-        <div class="item">Serranito</div><div class="price item">2,50 €</div><div class="price item">6,00 €</div>
-        <div class="item">Jamón York y queso</div><div class="price item">2,00 €</div><div class="price item">4,00 €</div>
-        <div class="item">Jamón serrano y queso</div><div class="price item">2,00 €</div><div class="price item">5,00 €</div>
-        <div class="item">Jamón y tomate</div><div class="price item">2,00 €</div><div class="price item">4,00 €</div>
-        <div class="item">Tortilla</div><div class="price item">2,00 €</div><div class="price item">4,00 €</div>
-        <div class="item">Rulo de cabra y cebolla</div><div class="price item">2,50 €</div><div class="price item">5,50 €</div>
-        <div class="item">Lomo al whisky</div><div class="price item">2,50 €</div><div class="price item">5,50 €</div>
-        <div class="item">Bacon y queso</div><div class="price item">2,50 €</div><div class="price item">4,50 €</div>
-      </div>
-    </section>
-
+    <!-- 4 -->
     <section id="compartir">
-      <h2>Para compartir</h2>
-      <div class="cols two">
-        <div class="item">Tabla de quesos</div><div class="price item">9,00 €</div>
-        <div class="item">Tabla de jamón / embutidos</div><div class="price item">10,00 €</div>
-        <div class="item">Callos</div><div class="price item">4,00 €</div>
-        <div class="item">Gambas</div><div class="price item">4,50 €</div>
-        <div class="item">Boquerón</div><div class="price item">3,50 €</div>
-        <div class="item">Patatas alioli</div><div class="price item">2,50 €</div>
-        <div class="item">Ensaladilla rusa</div><div class="price item">3,00 €</div>
-        <div class="item">Salmorejo</div><div class="price item">4,00 €</div>
-        <div class="item">Tomate con bonito</div><div class="price item">3,50 €</div>
-        <div class="item">Lacón con pimiento</div><div class="price item">4,50 €</div>
-        <div class="item">Patatas bravas</div><div class="price item">2,00 €</div>
-        <div class="item">Salpicón de mariscos</div><div class="price item">4,50 €</div>
-        <div class="item">Chorizo a la cazuela</div><div class="price item">4,50 €</div>
-        <div class="item">Tortilla de patatas</div><div class="price item">3,00 €</div>
-        <div class="item">Torreznos</div><div class="price item">3,50 €</div>
+      <h2 class="section-title">Compartir &amp; brindar</h2>
+      <div class="grid">
+        <div class="block">
+          <h3>Para compartir</h3>
+          <div class="cols two">
+            <div class="col-head name">·</div>
+            <div class="col-head">Tapa</div>
+            <div class="col-head">Ración</div>
+
+            <div class="row"><div class="name">Tabla de quesos</div><div class="price empty">—</div><div class="price">9,00 €</div></div>
+            <div class="row"><div class="name">Tabla de jamón / embutidos</div><div class="price empty">—</div><div class="price">10,00 €</div></div>
+            <div class="row"><div class="name">Callos</div><div class="price">4,00 €</div><div class="price empty">—</div></div>
+            <div class="row"><div class="name">Gambas</div><div class="price">4,50 €</div><div class="price empty">—</div></div>
+            <div class="row"><div class="name">Boquerón</div><div class="price">3,50 €</div><div class="price empty">—</div></div>
+            <div class="row"><div class="name">Patatas alioli</div><div class="price">2,50 €</div><div class="price empty">—</div></div>
+            <div class="row"><div class="name">Ensaladilla rusa</div><div class="price">3,00 €</div><div class="price empty">—</div></div>
+            <div class="row"><div class="name">Salmorejo</div><div class="price">4,00 €</div><div class="price empty">—</div></div>
+            <div class="row"><div class="name">Tomate con bonito</div><div class="price">3,50 €</div><div class="price empty">—</div></div>
+            <div class="row"><div class="name">Lacón con pimiento</div><div class="price">4,50 €</div><div class="price empty">—</div></div>
+            <div class="row"><div class="name">Patatas bravas</div><div class="price">2,00 €</div><div class="price empty">—</div></div>
+            <div class="row"><div class="name">Salpicón de marisco</div><div class="price">4,50 €</div><div class="price empty">—</div></div>
+            <div class="row"><div class="name">Chorizo a la cazuela</div><div class="price">4,50 €</div><div class="price empty">—</div></div>
+            <div class="row"><div class="name">Tortilla de patatas</div><div class="price">3,00 €</div><div class="price empty">—</div></div>
+            <div class="row"><div class="name">Torreznos</div><div class="price">3,50 €</div><div class="price empty">—</div></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h3>Vinos</h3>
+          <div class="cols one">
+            <div class="row"><div class="name">Tinto de verano</div><div class="price">2,20 €</div></div>
+            <div class="row"><div class="name">Tinto de verano de la casa</div><div class="price">3,00 €</div></div>
+            <div class="row"><div class="name">Ramón Bilbao</div><div class="price">PEND.</div></div>
+            <div class="row"><div class="name">Tamiz</div><div class="price">PEND.</div></div>
+            <div class="row"><div class="name">Naíz</div><div class="price">PEND.</div></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="alcohol">
-      <h2>Bebidas alcohólicas</h2>
-      <div class="cols two">
-        <div class="item">Chupito</div><div class="price item">2,50 €</div>
-        <div class="item">Cubata nacional</div><div class="price item">5,00 €</div>
-        <div class="item">Cubata premium</div><div class="price item">6,00 €</div>
-        <div class="item">Cubata JW Black Label</div><div class="price item">7,00 €</div>
-        <div class="item">Baileys</div><div class="price item">4,00 €</div>
-      </div>
-      <div class="brands">
-        <strong>Nacional:</strong> Cacique, DYC, DYC 8, Ballantine's, Seagram's, Larios<br />
-        <strong>Premium:</strong> Barceló Imperial, Cacique 500, Legendario, Jameson, Beefeater
-      </div>
-    </section>
-
-    <section id="vinos">
-      <h2>Vinos y vermú</h2>
-      <div class="cols two">
-        <div class="item">Tinto de verano</div><div class="price item">2,20 €</div>
-        <div class="item">Tinto de verano de la casa</div><div class="price item">2,50 €</div>
-        <div class="item">Vermú Martini</div><div class="price item">2,50 €</div>
-        <div class="item">Vermú Yzaguirre</div><div class="price item">3,00 €</div>
-      </div>
-      <p class="note">Copa de vino Naíz, Tamiz o Ramón Bilbao: consulta en barra.</p>
-    </section>
-
-    <a class="pdf" href="Menu_La_Esquina.pdf">Ver PDF de la carta</a>
-  </main>
-
-  <footer>@laesquinalc</footer>
+    <footer>
+      <div class="tag">Tu rincón favorito.</div>
+      <div class="ig">Síguenos en <strong>@laesquinalc</strong></div>
+    </footer>
+  </div>
 </body>
 </html>
